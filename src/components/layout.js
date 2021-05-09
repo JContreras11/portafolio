@@ -9,10 +9,35 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
-import "./scss/layout.scss"
+import { DesktopContainer } from "./header/Desktop"
+import { MobileContainer } from "./header/mobile"
 
-const Layout = ({ children }) => {
+// import "./scss/layout.scss"
+import "semantic-ui-css/semantic.min.css"
+import './scss/layout.scss'
+import {
+  Segment,
+  Container,
+  Grid,
+  Header as HeaderFooter,
+  List,
+} from "semantic-ui-react"
+import { createMedia } from "@artsy/fresnel"
+
+
+
+
+const { MediaContextProvider, Media } = createMedia({
+  breakpoints: {
+    mobile: 0,
+    tablet: 768,
+    computer: 1024,
+  },
+})
+
+export {Media};
+
+const Layout = ({ children, Heading }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -25,31 +50,36 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
+      <MediaContextProvider>
+        <DesktopContainer Heading={Heading}>{children}</DesktopContainer>
+        <MobileContainer Heading={Heading}>{children}</MobileContainer>
+        <footer>
+          <Segment inverted vertical style={{ padding: "5em 0em" }}>
+            <Container>
+              <Grid divided inverted stackable>
+                <Grid.Row>
+                  <Grid.Column width={12}>
+                    <HeaderFooter inverted as="h4" content="About" />
+                    <List link inverted>
+                      <List.Item as="a">Sitemap</List.Item>
+                      <List.Item as="a">Contact Us</List.Item>
+                      <List.Item as="a">Religious Ceremonies</List.Item>
+                      <List.Item as="a">Gazebo Plans</List.Item>
+                    </List>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Container>
+          </Segment>
         </footer>
-      </div>
+      </MediaContextProvider>
     </>
   )
 }
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  Heading: PropTypes.node,
 }
 
 export default Layout
