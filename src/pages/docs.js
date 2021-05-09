@@ -8,11 +8,13 @@ import Seo from "../components/seo"
 
 import { StaticImage } from "gatsby-plugin-image"
 import { HomepageHeading } from "../components/HomepageHeading"
+import { DocsIndex } from "../components/docs"
 
 
 const Docs = () => (
   <Layout Heading={HomepageHeading}>
-    <Seo title="Page two" />
+    <Seo title="Docs" />
+    <DocsIndex />
     <h1>Hi from the second page</h1>
     <p>Welcome to page 2</p>
     <StaticImage
