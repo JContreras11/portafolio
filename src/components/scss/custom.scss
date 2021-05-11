@@ -1,8 +1,21 @@
+$xs: 320px;
+$sm: 480px;
+$md: 1024px;
+$lg: 1200px;
+
+
+
+
+
 body {
     background: #f7f7f7 !important;
 
     .cursor{
         cursor: pointer;
+    }
+
+    .text-justify{
+        text-align: justify;
     }
 
     .shadow:hover {
@@ -76,6 +89,24 @@ body {
             padding-bottom: 4rem !important;
         }
     }
+    .ph-{
+        &1{
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+        &2{
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+        }
+        &3{
+            padding-left: 3rem !important;
+            padding-right: 3rem !important;
+        }
+        &4{
+            padding-left: 4rem !important;
+            padding-right: 4rem !important;
+        }
+    }
     .mv-{
         &1 {
             margin-top: 1rem !important;
@@ -147,5 +178,13 @@ body {
 
     .grey{
         color: grey !important;
+    }
+
+
+    .date-releases{
+        @media (min-width: $md) {
+            margin-top: -12vh;
+            text-align: end;
+        }
     }
 }
