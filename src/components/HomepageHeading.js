@@ -1,6 +1,7 @@
 import React from "react";
-import { Container, Header, Button, Icon } from "semantic-ui-react"
+import { Container, Header, Button, Icon, Reveal, Image } from "semantic-ui-react"
 import PropTypes from "prop-types"
+import { StaticImage } from "gatsby-plugin-image";
 
 /* Heads up!
  * HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled
@@ -8,9 +9,31 @@ import PropTypes from "prop-types"
  */
 export const HomepageHeading = ({ mobile }) => (
   <Container text>
+    <Reveal animated="move left">
+      <Reveal.Content visible>
+        <StaticImage
+          src="../images/me_invert.png"
+          quality={95}
+          height={420}
+          formats={["AUTO", "WEBP", "AVIF"]}
+          alt="Mobile Apps"
+          style={{ marginBottom: `1.45rem` }}
+        />
+      </Reveal.Content>
+      <Reveal.Content hidden>
+        <StaticImage
+          src="../images/me.png"
+          quality={95}
+          height={420}
+          formats={["AUTO", "WEBP", "AVIF"]}
+          alt="Mobile Apps"
+          style={{ marginBottom: `1.45rem` }}
+        />
+      </Reveal.Content>
+    </Reveal>
     <Header
       as="h1"
-      content="Imagine-a-Company"
+      content="<JC/>"
       inverted
       style={{
         fontSize: mobile ? "2em" : "4em",
@@ -21,17 +44,24 @@ export const HomepageHeading = ({ mobile }) => (
     />
     <Header
       as="h2"
-      content="Do whatever you want when you want to."
       inverted
       style={{
         fontSize: mobile ? "1.5em" : "1.7em",
         fontWeight: "normal",
         marginTop: mobile ? "0.5em" : "1.5em",
+        display: "flex",
+        textAlign: "center",
+        justifyContent: "center",
       }}
-    />
-    <Button primary size="huge">
-      Get Started
-      <Icon name="right arrow" />
+    >
+      a guy who transforms <Icon className="mh-1" size="tiny" name="coffee" />{" "}
+      into <Icon className="mh-1" size="tiny" name="code" />
+    </Header>
+    <Button primary inverted size="huge">
+      <Icon name="chevron left" />
+      Meet me
+      <strong>/</strong>
+      <Icon name="chevron right" />
     </Button>
   </Container>
 )
