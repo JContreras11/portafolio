@@ -28,8 +28,8 @@ cNMMMMMMMMMMMMMk:OMMMMM0lkWl
                     <Header.Content>Status:</Header.Content>
                   </Header>
                   <p style={{ fontSize: "1.33em" }}>#OPENTOWORK</p>
-                  <p>If you are a person from <strong>Medium</strong>, i want you to know that the inspiration for this page is thanks to the hiring link in the javascript console</p>
-                  <p>I <i class="icon heart"></i> that kind of details <i class="icon terminal"></i> ;)</p>
+                  <p>If you are a person from <strong><i className="icon medium m" style={{ margin: 0}}></i>edium</strong>, i want you to know that the inspiration for this page is thanks to the hiring link in the javascript console</p>
+                  <p>I <i className="icon heart"></i> that kind of details <i className="icon terminal"></i> ;)</p>
 
                 </Message>
               </Grid.Column>

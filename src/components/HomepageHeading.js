@@ -39,7 +39,6 @@ export const HomepageHeading = ({ mobile }) => (
         fontSize: mobile ? "2em" : "4em",
         fontWeight: "normal",
         marginBottom: 0,
-        marginTop: mobile ? "1.5em" : "3em",
       }}
     />
     <Header
@@ -48,16 +47,13 @@ export const HomepageHeading = ({ mobile }) => (
       style={{
         fontSize: mobile ? "1.5em" : "1.7em",
         fontWeight: "normal",
-        marginTop: mobile ? "0.5em" : "1.5em",
-        display: "flex",
-        textAlign: "center",
-        justifyContent: "center",
+        textTransform: 'uppercase',
       }}
     >
-      a guy who transforms <Icon className="mh-1" size="tiny" name="coffee" />{" "}
+      a guy who can transforms <Icon className="mh-1" size="tiny" name="coffee" />{" "}
       into <Icon className="mh-1" size="tiny" name="code" />
     </Header>
-    <Button primary inverted size="huge">
+    <Button className="mv-2" primary inverted size="huge">
       <Icon name="chevron left" />
       Meet me
       <strong>/</strong>

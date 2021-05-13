@@ -59,13 +59,13 @@ const Layout = ({ children, Heading }) => {
               <Grid divided inverted stackable>
                 <Grid.Row>
                   <Grid.Column width={12}>
-                    <HeaderFooter inverted as="h4" content="About" />
+                    {/* <HeaderFooter inverted as="h4" content="About" />
                     <List link inverted>
                       <List.Item as="a">Sitemap</List.Item>
                       <List.Item as="a">Contact Us</List.Item>
                       <List.Item as="a">Religious Ceremonies</List.Item>
                       <List.Item as="a">Gazebo Plans</List.Item>
-                    </List>
+                    </List> */}
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
