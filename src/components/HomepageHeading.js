@@ -2,33 +2,29 @@ import React from "react";
 import { Container, Header, Button, Icon, Reveal, Image } from "semantic-ui-react"
 import PropTypes from "prop-types"
 import { StaticImage } from "gatsby-plugin-image";
+import me_invert from "../images/me_invert.png";
+import me from "../images/me.png";
 
 /* Heads up!
  * HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled
  * components for such things.
  */
 export const HomepageHeading = ({ mobile }) => (
-  <Container text>
-    <Reveal animated="move left">
+  <Container text textAlign="center">
+    <Reveal
+      animated="fade"
+      instant
+      style={{ maxWidth: "38vw", left: "29%" }}
+    >
       <Reveal.Content visible>
-        <StaticImage
-          src="../images/me_invert.png"
-          quality={95}
-          height={420}
-          formats={["AUTO", "WEBP", "AVIF"]}
-          alt="Mobile Apps"
+        <Image
+          src={me_invert}
+          size="medium"
           style={{ marginBottom: `1.45rem` }}
         />
       </Reveal.Content>
       <Reveal.Content hidden>
-        <StaticImage
-          src="../images/me.png"
-          quality={95}
-          height={420}
-          formats={["AUTO", "WEBP", "AVIF"]}
-          alt="Mobile Apps"
-          style={{ marginBottom: `1.45rem` }}
-        />
+        <Image src={me} size="medium" style={{ marginBottom: `1.45rem` }} />
       </Reveal.Content>
     </Reveal>
     <Header
@@ -48,13 +44,13 @@ export const HomepageHeading = ({ mobile }) => (
       style={{
         fontSize: mobile ? "1.5em" : "1.7em",
         fontWeight: "normal",
-        textTransform: 'uppercase',
+        textTransform: "uppercase",
       }}
     >
-      a guy who can transforms <Icon className="mh-1" size="tiny" name="coffee" />{" "}
-      into <Icon className="mh-1" size="tiny" name="code" />
+      a guy who can transforms{" "}
+      <Icon className="mh-1" size="tiny" name="coffee" /> into{" "}
+      <Icon className="mh-1" size="tiny" name="code" />
     </Header>
-
   </Container>
 )
 
