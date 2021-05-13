@@ -12,6 +12,10 @@ import {
 } from "semantic-ui-react"
 import { MessagesArea } from './MessagesArea';
 
+import emailjs, { init } from "emailjs-com"
+init(process.env.GATSBY_EMAIL_KEY)
+
+
 const responses = {
   hi: "Hi 👋🏽¡ thanks for chat with me",
   salute: "My name is Isus Bot 🤖",
@@ -30,14 +34,8 @@ const responses = {
   showMessage: ({ name, email, message }) => `from: ${email} \nto: jesuscontreras1996102@gmail.com \nSubject: 🤑 💵 ${name} wants to give you a million dollars 🤑 💵 \nMessage: ${message} \n`, // I'ts a joke
   thanksMessage:
     "🤖: Thanks for chat whit me, I'm sure Jesus will be happy to hear from you",
-  contact: `
-    📧: jesuscontreras1996102@gmail.com \n
-    📱: +51 3105797607 \n
-  `,
-  options: `"yes": Send email to Jesus \n
-"no": End chat with 🤖 \n
-"restart": Start chat again \n`,
-}
+  contact: `📧: jesuscontreras1996102@gmail.com \n📱: +57 3105797607 \n`,
+  options: `"yes": Send email to Jesus \n"no": End chat with 🤖 \n"restart": Start chat again \n`,}
 
 const USER = "user", ADM= "admin";
 const linktoWs= `https://api.whatsapp.com/send?phone=573105797607`
@@ -176,6 +174,23 @@ export const ContactIndex = () => {
       changeInfo(userData)
 
         console.log('el quinta vez');
+
+        emailjs.send(process.env.GATSBY_EMAIL_SERVICE,process.env.GATSBY_EMAIL_TEMPLATE,{
+          to_name: "Jesus",
+          from_name: userData.name,
+          from_email: userData.email,
+          message: userData.message,
+          })
+          .then(
+            function (response) {
+              console.log("SUCCESS!", response.status, response.text)
+            },
+            function (error) {
+              console.log("FAILED...", error)
+            }
+          )
+
+
         let msg = [
           ...messages,
           { from: ADM, message: responses.showLabel },
@@ -196,7 +211,7 @@ export const ContactIndex = () => {
           ])
           writeToggle(false)
           fetchToggle(false)
-        }, 1800)
+        }, 6000)
     }, 1500)
   }
 
@@ -213,7 +228,6 @@ export const ContactIndex = () => {
       writeToggle(false)
     }, 2000)
   }
-
 
   if (
     userMessages.find(
@@ -269,37 +283,28 @@ export const ContactIndex = () => {
     return (
       <>
         <Segment style={{ padding: "8em 0em" }} vertical>
-          <Grid container stackable verticalAlign="middle">
+          <Grid container>
             <Grid.Row>
               <Grid.Column textAlign="center" className="mv-2" width={16}>
                 <Header as="h3" style={{ fontSize: "2em" }}>
                   Message Me
                 </Header>
               </Grid.Column>
-              <Grid.Column
-                textAlign="center"
-                className="mv-2"
-                width={5}
-              >
+              <Grid.Column textAlign="center" className="mv-2" width={5}>
                 <a href={linktoWs} target="_blank">
                   <Icon className="grey" name="whatsapp" size="huge" />
                 </a>
               </Grid.Column>
-              <Grid.Column
-                textAlign="center"
-                className="mv-2"
-                width={5}
-              >
+              <Grid.Column textAlign="center" className="mv-2" width={5}>
                 <a href="https://github.com/JContreras11" target="_blank">
                   <Icon className="grey" name="github" size="huge" />
                 </a>
               </Grid.Column>
-              <Grid.Column
-                textAlign="center"
-                className="mv-2"
-                width={5}
-              >
-                <a href="https://www.linkedin.com/in/jesus-contreras-padilla-084349113/" target="_blank">
+              <Grid.Column textAlign="center" className="mv-2" width={5}>
+                <a
+                  href="https://www.linkedin.com/in/jesus-contreras-padilla-084349113/"
+                  target="_blank"
+                >
                   <Icon className="grey" name="linkedin" size="huge" />
                 </a>
               </Grid.Column>
@@ -327,10 +332,10 @@ export const ContactIndex = () => {
                           onChange={e => chageText(e.target.value)}
                           value={message}
                         />
+                        <Form.Button inverted primary onClick={() => submit()}>
+                          <Icon name="send" />
+                        </Form.Button>
                       </Form.Field>
-                      <Form.Button inverted primary onClick={() => submit()}>
-                        <Icon name="send" />
-                      </Form.Button>
                     </Form.Group>
                   </Form>
                 </Container>

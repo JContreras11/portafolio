@@ -44,6 +44,7 @@ export const HomepageHeading = ({ mobile }) => (
     <Header
       as="h2"
       inverted
+      className="header-cus"
       style={{
         fontSize: mobile ? "1.5em" : "1.7em",
         fontWeight: "normal",

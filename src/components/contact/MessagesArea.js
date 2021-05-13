@@ -8,7 +8,8 @@ export const MessagesArea = ({messages, writing=false}) => {
   const messagesEndRef = useRef(null)
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    const scroll = messagesEndRef.current?.scrollHeight - messagesEndRef.current?.clientHeight;
+    messagesEndRef.current?.scrollTo(0, scroll);
   }
 
   useEffect(() => {
@@ -16,7 +17,7 @@ export const MessagesArea = ({messages, writing=false}) => {
   }, [messages])
 
     return (
-      <div className="messages-area">
+      <div className="messages-area" ref={messagesEndRef}>
         {!!messages.length ? (
           messages.map(({ from, message, pre, link }, key) => {
             if (!!pre) {
@@ -56,7 +57,6 @@ export const MessagesArea = ({messages, writing=false}) => {
             <Writing />
           </p>
         )}
-        <div ref={messagesEndRef} />
       </div>
     )
 };
