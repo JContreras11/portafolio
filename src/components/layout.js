@@ -21,10 +21,11 @@ import {
   Grid,
   Header as HeaderFooter,
   List,
+  Image
 } from "semantic-ui-react"
 import { createMedia } from "@artsy/fresnel"
 
-
+import logo_inverted from '../images/me_invert.png'
 
 
 const { MediaContextProvider, Media } = createMedia({
@@ -54,18 +55,20 @@ const Layout = ({ children, Heading }) => {
         <DesktopContainer Heading={Heading}>{children}</DesktopContainer>
         <MobileContainer Heading={Heading}>{children}</MobileContainer>
         <footer>
-          <Segment inverted vertical style={{ padding: "5em 0em" }}>
+          <Segment inverted vertical style={{ padding: "1em 0em" }}>
             <Container>
-              <Grid divided inverted stackable>
+              <Grid inverted>
                 <Grid.Row>
-                  <Grid.Column width={12}>
-                    {/* <HeaderFooter inverted as="h4" content="About" />
-                    <List link inverted>
-                      <List.Item as="a">Sitemap</List.Item>
-                      <List.Item as="a">Contact Us</List.Item>
-                      <List.Item as="a">Religious Ceremonies</List.Item>
-                      <List.Item as="a">Gazebo Plans</List.Item>
-                    </List> */}
+                  <Grid.Column width={16} textAlign="center">
+                    <p style={{ display: "inline-flex" }}>
+                      Made with <i className="icon react mh-1 rotate" style={{width: "auto", height: "auto"}}></i> and{" "}
+                      <i className="icon heart mh-1 "></i> by{" "}
+                      <Image
+                        className="mh-1"
+                        src={logo_inverted}
+                        style={{ width: "20px" }}
+                      />
+                    </p>
                   </Grid.Column>
                 </Grid.Row>
               </Grid>

@@ -21,6 +21,8 @@ export class DesktopContainer extends React.Component {
   hideFixedMenu = () => this.setState({ fixed: false })
   showFixedMenu = () => this.setState({ fixed: true })
 
+  activeStatus = href => window.location.pathname === href || false
+
   render() {
     const { children, Heading } = this.props
     const { fixed } = this.state
@@ -46,14 +48,27 @@ export class DesktopContainer extends React.Component {
               size="large"
             >
               <Container>
-                <Menu.Item as="a" href="/" active>
+                <Menu.Item as="a" href="/" active={this.activeStatus("/")}>
                   Home
                 </Menu.Item>
-                <Menu.Item as="a" href="/docs">Docs</Menu.Item>
-                <Menu.Item as="a" href="/api">API</Menu.Item>
-                <Menu.Item as="a" href="/features">Features</Menu.Item>
-                <Menu.Item as="a" href="/releases">Releases</Menu.Item>
-                <Menu.Item position="right">
+                <Menu.Item
+                  as="a"
+                  href="/docs"
+                  active={this.activeStatus("/docs")}
+                >
+                  Docs
+                </Menu.Item>
+                <Menu.Item
+                  as="a"
+                  href="/releases"
+                  active={this.activeStatus("/releases")}
+                >
+                  Releases
+                </Menu.Item>
+                <Menu.Item
+                  position="right"
+                  active={this.activeStatus("/contact")}
+                >
                   <Button
                     as="a"
                     href="/contact"
@@ -66,7 +81,7 @@ export class DesktopContainer extends React.Component {
                 </Menu.Item>
               </Container>
             </Menu>
-            <Heading/>
+            <Heading />
           </Segment>
         </Visibility>
 

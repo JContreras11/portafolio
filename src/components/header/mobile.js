@@ -18,6 +18,8 @@ export class MobileContainer extends React.Component {
 
   handleToggle = () => this.setState({ sidebarOpened: true })
 
+  activeStatus = href => window.location.pathname === href || false
+
   render() {
     const { children, Heading } = this.props
     const { sidebarOpened } = this.state
@@ -33,13 +35,19 @@ export class MobileContainer extends React.Component {
             vertical
             visible={sidebarOpened}
           >
-            <Menu.Item as="a" active href="/">
+            <Menu.Item as="a" href="/" active={this.activeStatus("/")}>
               Home
             </Menu.Item>
-            <Menu.Item as="a" href="/docs">Docs</Menu.Item>
-            <Menu.Item as="a" href="/api">API</Menu.Item>
-            <Menu.Item as="a" href="/features">Features</Menu.Item>
-            <Menu.Item as="a" href="/releases">Releases</Menu.Item>
+            <Menu.Item as="a" href="/docs" active={this.activeStatus("/docs")}>
+              Docs
+            </Menu.Item>
+            <Menu.Item
+              as="a"
+              href="/releases"
+              active={this.activeStatus("/releases")}
+            >
+              Releases
+            </Menu.Item>
           </Sidebar>
 
           <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -54,8 +62,16 @@ export class MobileContainer extends React.Component {
                   <Menu.Item onClick={this.handleToggle}>
                     <Icon name="sidebar" />
                   </Menu.Item>
-                  <Menu.Item position="right">
-                    <Button href="/contact" as="a" inverted style={{ marginLeft: "0.5em" }}>
+                  <Menu.Item
+                    position="right"
+                    active={this.activeStatus("/contact")}
+                  >
+                    <Button
+                      href="/contact"
+                      as="a"
+                      inverted
+                      style={{ marginLeft: "0.5em" }}
+                    >
                       Contact
                     </Button>
                   </Menu.Item>

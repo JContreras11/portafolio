@@ -31,7 +31,7 @@ const responses = {
   getEmail: "🤖: Ok, please tell me your email",
   getMessage: "🤖: Now write your message: (ENTER to send mail)",
   showLabel: "🤖: Thanks¡, this message was sent to Jesus Contreras: ",
-  showMessage: ({ name, email, message }) => `from: ${email} \nto: jesuscontreras1996102@gmail.com \nSubject: 🤑 💵 ${name} wants to give you a million dollars 🤑 💵 \nMessage: ${message} \n`, // I'ts a joke
+  showMessage: ({ name, email, message }) => `From: ${email} \nTo: jesuscontreras1996102@gmail.com \nSubject: 🤑 💵 ${name} wants to give you a million dollars 🤑 💵 \nMessage: ${message} \n`, // I'ts a joke
   thanksMessage:
     "🤖: Thanks for chat whit me, I'm sure Jesus will be happy to hear from you",
   contact: `📧: jesuscontreras1996102@gmail.com \n📱: +57 3105797607 \n`,

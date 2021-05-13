@@ -44,7 +44,7 @@ export const HomepageHeading = ({ mobile }) => (
     <Header
       as="h2"
       inverted
-      className="header-cus"
+      className="header-cus mb-3"
       style={{
         fontSize: mobile ? "1.5em" : "1.7em",
         fontWeight: "normal",
@@ -54,12 +54,7 @@ export const HomepageHeading = ({ mobile }) => (
       a guy who can transforms <Icon className="mh-1" size="tiny" name="coffee" />{" "}
       into <Icon className="mh-1" size="tiny" name="code" />
     </Header>
-    <Button className="mv-2" primary inverted size="huge">
-      <Icon name="chevron left" />
-      Meet me
-      <strong>/</strong>
-      <Icon name="chevron right" />
-    </Button>
+
   </Container>
 )
 

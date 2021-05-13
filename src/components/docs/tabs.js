@@ -7,8 +7,8 @@ import { MobileTabContainer } from './mobile';
 
 
 const panes = [
-    { menuItem: "Mobile", render: () => <MobileTabContainer /> },
-    { menuItem: "Desktop", render: () => <DesktopTabContainer /> },
+  { menuItem: {icon: "mobile alternate", content: "Mobil"}, render: () => <MobileTabContainer /> },
+  { menuItem: {icon: "laptop", content: "Desktop"},  render: () => <DesktopTabContainer /> },
 ]
 
 
@@ -22,7 +22,6 @@ export const TabsContainer = ({ selected, toggleSelected }) => {
             activeIndex={selected}
             menu={{
               fluid: true,
-              vertical: true,
               tabular: true,
               borderless: true,
             }}

@@ -38,6 +38,9 @@ export const DocsIndex = () => {
         ) : (
           <Segment style={{ padding: "8em 0em" }} vertical>
             <Grid container stackable verticalAlign="middle">
+              <Grid.Column textAlign="center" className="mv-2" width={16}>
+                <Header as="h3" content="Developments" textAlign="center" center/>
+              </Grid.Column>
               <Grid.Row>
                 <Grid.Column textAlign="center" width={8}>
                   <Container
@@ -51,7 +54,7 @@ export const DocsIndex = () => {
                       duration={600}
                       visible={visibleMobil}
                     >
-                      <Image centered size="medium" src={mobil_img} />
+                      <Image centered className="img-responsive" src={mobil_img} />
                     </Transition>
                     <Header as="h3">Mobile Apps</Header>
                   </Container>
